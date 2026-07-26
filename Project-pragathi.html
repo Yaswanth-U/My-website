@@ -62,7 +62,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-image:-moz-linear-gradient();
+      background: rgba(246, 243, 238, 0.82);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid transparent;
       transition: border-color var(--transition);
@@ -136,14 +136,19 @@
       min-height: 520px;
       position: relative;
       overflow: hidden;
-      margin-top: 0;        
+      margin-top: 0;        /* sits under nav */
     }
+
+    /* ── COVER IMAGE ─────────────────────────
+       Replace the gradient below with your real
+       image:  background-image: url('photo.jpg');
+       ──────────────────────────────────────── */
     .project-hero-img {
       position: absolute;
       inset: 0;
       background:
         linear-gradient(160deg, #292524 0%, #78350F 60%, #B45309 100%);
-      background-image: url('images/auv-cover.png'); 
+      background-image: url('images/Pragathi-cover.jpg'); 
       background-size: cover; background-position: center; 
 
       transform: scale(1.04);
@@ -153,6 +158,7 @@
     .project-hero:hover .project-hero-img,
     .project-hero-img.loaded { transform: scale(1); }
 
+    /* dark gradient overlay so text is always readable */
     .project-hero::after {
       content: '';
       position: absolute;
@@ -164,6 +170,7 @@
       );
     }
 
+    /* text sits above the overlay */
     .project-hero-content {
       position: absolute;
       bottom: 0; left: 0; right: 0;
@@ -186,7 +193,7 @@
 
     .project-hero-content h1 em {
       font-style: italic;
-      color: #FCD34D;
+      color: #FCD34D;  /* amber highlight */
     }
 
     .hero-meta {
@@ -209,14 +216,16 @@
       border-radius: 100px;
     }
 
-    /* MAIN CONTENT WRAPPER */
+    /* ═══════════════════════════════════════════
+       MAIN CONTENT WRAPPER
+       ═══════════════════════════════════════════ */
     .page-content {
       max-width: 1100px;
       margin: 0 auto;
       padding: 0 5vw;
     }
 
-    /*TWO-COLUMN LAYOUT*/
+    /* ─── TWO-COLUMN LAYOUT ─────────────────── */
     .project-body {
       display: grid;
       grid-template-columns: 1fr 340px;   /* main | sidebar */
@@ -225,7 +234,9 @@
       align-items: start;
     }
 
-    /*LEFT COLUMN — Description*/
+    /* ═══════════════════════════════════════════
+       LEFT COLUMN — Description
+       ═══════════════════════════════════════════ */
     .main-col h2 {
       font-size: clamp(1.6rem, 3vw, 2.2rem);
       margin-bottom: 1.2rem;
@@ -242,7 +253,7 @@
 
     .main-col p strong { color: var(--ink); font-weight: 500; }
 
-    /*inline image inside description*/
+    /* ── inline image inside description ────── */
     .inline-img {
       width: 100%;
       border-radius: var(--radius);
@@ -256,6 +267,7 @@
       display: block;
     }
 
+    /* placeholder if no image yet */
     .inline-img .img-placeholder {
       width: 100%;
       height: 280px;
@@ -280,6 +292,7 @@
       border-top: 1px solid var(--border);
     }
 
+    /* ── callout block ────────────────────────── */
     .callout {
       background: var(--accent-lt);
       border-left: 3px solid var(--accent);
@@ -301,7 +314,9 @@
       margin-bottom: 0.3rem;
     }
 
-    /* RIGHT COLUMN — Sidebar*/
+    /* ═══════════════════════════════════════════
+       RIGHT COLUMN — Sidebar
+       ═══════════════════════════════════════════ */
     .sidebar {
       position: sticky;
       top: 7rem;        /* sticks below nav */
@@ -326,7 +341,7 @@
       margin-bottom: 1rem;
     }
 
-    /*GitHub link*/
+    /* ── GitHub link ─────────────────────────── */
     .github-link {
       display: flex;
       align-items: center;
@@ -354,7 +369,7 @@
       flex-shrink: 0;
     }
 
-    /*Tags */
+    /* ── Tags ────────────────────────────────── */
     .tag-list {
       display: flex;
       flex-wrap: wrap;
@@ -372,7 +387,7 @@
       border-radius: 100px;
     }
 
-    /*Funding / info rows*/
+    /* ── Funding / info rows ─────────────────── */
     .info-row {
       display: flex;
       justify-content: space-between;
@@ -401,6 +416,7 @@
       text-align: right;
     }
 
+    /* ── Status badge ────────────────────────── */
     .status-badge {
       display: inline-flex;
       align-items: center;
@@ -426,7 +442,9 @@
     .status-dot.paused { background: var(--accent); animation: none; }
     .status-dot.complete { background: var(--ink-muted); animation: none; }
 
-    /* NEXT PROJECT STRIP */
+    /* ═══════════════════════════════════════════
+       NEXT PROJECT STRIP
+       ═══════════════════════════════════════════ */
     .next-project {
       border-top: 1px solid var(--border);
       padding: 4rem 5vw;
@@ -465,7 +483,9 @@
 
     .next-project:hover .next-arrow { transform: translateX(8px); }
 
-    /* FOOTER */
+    /* ─────────────────────────────────────────
+       FOOTER
+       ───────────────────────────────────────── */
     footer {
       border-top: 1px solid var(--border);
       padding: 2rem 5vw;
@@ -478,6 +498,10 @@
       color: var(--ink-muted);
       text-transform: uppercase;
     }
+
+    /* ─────────────────────────────────────────
+       RESPONSIVE
+       ───────────────────────────────────────── */
     @media (max-width: 768px) {
       .project-body { grid-template-columns: 1fr; gap: 2.5rem; }
       .sidebar { position: static; }
@@ -493,7 +517,9 @@
   <!-- ── NAV ──────────────────────────────── -->
   <nav id="navbar">
     <a href="index.html" class="nav-logo">Y.</a>
+    <!-- ↑ clicking the logo always goes back home -->
     <a href="index.html#projects" class="nav-back">← All Projects</a>
+    <!-- ↑ this takes the user back to the projects section specifically -->
   </nav>
 
   <div class="project-hero">
@@ -501,13 +527,12 @@
 
     <div class="project-hero-content">
       <span class="label">Project 01</span>
-      <h1>Bio-inspired<em> AUV</em></h1>
+      <h1>Pragat<em>hi</em></h1>
 
       <div class="hero-meta">
-        <span class="hero-badge">GUJCOST Robofest</span>
-        <span class="hero-badge">Control systems</span>
-        <span class="hero-badge">Autonomous navigation</span>
-        <span class="hero-badge">Bio inspired design</span>
+        <span class="hero-badge">Completed</span>
+        <span class="hero-badge">Data Analysis</span>
+        <span class="hero-badge">Research</span>
       </div>
     </div>
   </div>
@@ -517,37 +542,41 @@
 
         <h2 class="reveal">Overview</h2>
         <p class ="reveal">
-            <strong>Bio inspired Autonomous Underwater Vehicle(AUV)</strong> is a project to devlop an AUV that mimics the swimming mechanics of Manta rays. The AUV is designed to navigate underwater environments using a propulsion system that replicates the undulating motion of manta ray fins. The project involves the integration of advanced control systems, sensors, and lightweight materials to create a functional prototype capable of stable and efficient underwater movement. Through iterative design and testing.
+            <strong>Pragathi</strong> is an survey to analyse and investigate physological stress in high school students in India. The project aims to identify key stressors and potential interventions to improve student well-being and academic performance.
         </p>
         <p class="reveal">
-          Primary objective of the project is to design and devlop a functional AUV prototype.
+          The process involves extensive research including literature review, data collection through surveys and interviews, and data analysis using statistical tools. The goal is to provide actionable insights for educators, policymakers, and mental health professionals to create supportive environments for students.
         </p>
 
         <!-- Inline photo — swap src for a real image -->
         <figure class="inline-img reveal">
           <div class="img-placeholder">
-            <img src="images/auv-img.jpg" alt="interactioon with students">
+            <img src="images/Pragathi-img.jpg" alt="interactioon with students">
           </div>
-          <figcaption>propulsion system.</figcaption>
+          <figcaption>Intraction with students.</figcaption>
         </figure>
 
         <h2 class="reveal">Technical Approach</h2>
         <p class="reveal">
-            The initial aim of project is to win GUJCOST Robofest competition, so the design and development of AUV is focused on the requirements and constraints of the competition. The project will involve a multidisciplinary approach, combining principles of mechanical engineering, control systems, and robotics to create a functional AUV prototype. The design process will include iterative prototyping and testing to optimize the performance and stability of the AUV in underwater environments.
+          The technical approach for the project involves a mixed-methods of research, combining quantitative and qualitative data collection and analysis techniques. Quantitative data is gathered through structured surveys distributed to high school students across various age groups(Classes 9th and 10th), focusing on factors such as academic pressure, family expectations, and access to resources. Qualitative data is collected through in-depth interviews and focus group discussions with students, educators, and mental health professionals to gain deeper insights into the lived experiences of stress among students. Data analysis is conducted using statistical software for quantitative data and thematic analysis for qualitative data, allowing for a comprehensive understanding of the stressors affecting high school students and the development of evidence-based recommendations for interventions.
         </p>
         <p class="reveal">
-            all of the contents with in this project are open sourced and available in github check it out if you're intersted.
+            hello#samolepdkoffd
         </p>
 
         <div class="callout reveal">
           <strong>Current Status:</strong>
-          The project is currently in ideation phase, and yet to be devloped.
+          The project is completed, with findings published by NCSE(National Children's Science Congress) and shared with relevant stakeholders. Future work may involve longitudinal studies to track changes over time and the development of targeted intervention programs based on the identified stressors.
         </div>
 
+        <h2 class="reveal">Future Scope</h2>
+        <p class="reveal">
+          Future directions for the Pragathi project include expanding the research to include a more diverse sample of students across different regions and socio-economic backgrounds in India. Additionally, there is potential to explore the effectiveness of various intervention strategies, such as mindfulness programs, counseling services, and changes in academic policies, to mitigate stress among high school students. Collaborations with schools, mental health professionals, and policymakers will be crucial in implementing and evaluating these interventions to ensure they effectively address the identified stressors and improve student well-being on a larger scale.
+        </p>
 
         <h2 class="reveal">Outcomes &amp; Learnings</h2>
         <p class="reveal">
-              The project is expected to contribute to the field of bio-inspired robotics and advance our understanding of underwater locomotion. By mimicking the swimming mechanics of manta rays, the AUV has the potential to achieve efficient and stable movement in underwater environments, which could have applications in marine research, environmental monitoring, and underwater exploration. Additionally, the project will provide valuable insights into the design and control of bio-inspired robotic systems, paving the way for future innovations in underwater robotics.
+          The data compiled has a lot of potential and a lot of interesting trends, but due to limited timeframe we are not able to achieve full usage of data. So I've decided to Open source this project if you want to work on it please contact me.
         </p>
 
       </main>
@@ -578,21 +607,21 @@
             <span class="info-key">Status</span>
             <span class="info-val">
               <span class="status-badge">
-                <span class="status-dot active"></span> Working on it
+                <span class="status-dot complete"></span> Completed
               </span>
             </span>
           </div>
           <div class="info-row">
             <span class="info-key">Started</span>
-            <span class="info-val">April</span>
+            <span class="info-val">Oct 2023</span>
           </div>
           <div class="info-row">
-            <span class="info-key">Team guide</span>
-            <span class="info-val">Dr. Kalairassan</span>
+            <span class="info-key">Team</span>
+            <span class="info-val">Dr. KSS Praveena, Ms. Nanditha Uppalapu</span>
           </div>
           <div class="info-row">
             <span class="info-key">Institution</span>
-            <span class="info-val">GUJCOST - Robofest</span>
+            <span class="info-val">National Children's Science Congress</span>
           </div>
         </div>
 
@@ -600,21 +629,20 @@
           <div class="sidebar-card-title">Funding &amp; Support</div>
           <div class="info-row">
             <span class="info-key">Source</span>
-            <span class="info-val">GUJCOST - Robofest</span>
+            <span class="info-val">APCOST-NSCE Program</span>
           </div>
           <div class="info-row">
             <span class="info-key">Budget</span>
-            <span class="info-val">20,000</span>
+            <span class="info-val">₹ 1,000</span>
           </div>
         </div>
 
         <div class="sidebar-card reveal">
           <div class="sidebar-card-title">Tools</div>
           <div class="tag-list">
-            <span class="tag">Mechanical Design</span>
-            <span class="tag">Control Systems</span>
-            <span class="tag">python</span>
-            <span class="tag">Fusion 360</span>
+            <span class="tag">MS Excel</span>
+            <span class="tag">Google forms</span>
+            <span class="tag">Python</span>
           </div>
         </div>
 
@@ -627,7 +655,7 @@
   <a href="Project-Template.html" class="next-project reveal">
     <div>
       <div class="next-label">Next Project</div>
-      <div class="next-title">ATV using Theo Jensen's linkage</div>
+      <div class="next-title">Ornithopter</div>
     </div>
     <span class="next-arrow">→</span>
   </a>
