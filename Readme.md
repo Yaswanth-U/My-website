@@ -1,5 +1,5 @@
 # This is my website(Portfolio).
-
+## I tried to use git scm after 1st review but made a local repo unknowingly so i copyied all the code to new repo
 ## How did I make this?
 I wanted a professional-looking website, so I progressed from basic HTML to learning CSS and JavaScript (JS), and I've jumped on YouTube to search for tutorials. I have learned that for simple animations, JS is not required, so I limited myself to CSS (you don't have to!). 
 ## Inspiration
@@ -19,6 +19,8 @@ The site is hosted on GitHub Pages.
 
 ## Contribution
 Feel free to edit, copy and reuse my code in your projects.
+
+
 ### Here are list of features I want to add in future
 1. Darkmode
 2. better colours
