@@ -161,22 +161,37 @@
         }
 
         #hero{
-            min-height: 100vh;
+            position: absolute;
+            top: 10%;
+            left: 9%;
+            z-index: 2;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding-top: 7rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            width: 82%;
+            height: 74%;
+            min-height: 0;
+            max-width: none;
+            margin: 0;
+            padding: 2% 5%;
+            overflow: hidden;
+            background: repeating-linear-gradient(
+                to bottom,
+                rgba(255,255,255,0.05) 0px,
+                rgba(255,255,255,0.05) 1px,
+                rgba(0,0,0,0.15) 2px,
+                rgba(0,0,0,0.15) 3px
+            );
+            animation: flicker 0.8s infinite, glitch 0.1s infinite;
         }
 
         .hero-tag{
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
+            font-size: clamp(0.48rem, 0.7vw, 0.75rem);
             letter-spacing: 0.12em;
             text-transform: uppercase;
             color: var(--accent);
-            margin-bottom: 1.8rem;
+            margin-bottom: clamp(0.4rem, 1.2vw, 1.25rem);
             display: flex;
             align-items: center;
             gap: 0.6em;
@@ -190,11 +205,11 @@
         }
 
         h1.hero-name{
-            font-size: clamp(3.5rem, 9vw, 7.5rem);
+            font-size: clamp(1.75rem, 7vw, 6.25rem);
             font-weight: 300;
             line-height: 1.02;
             letter-spacing: -0.035em;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.2rem;
         }
 
         h1.hero-name em{
@@ -203,26 +218,28 @@
         }
 
         .hero-sub{
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-size: clamp(0.75rem, 1.7vw, 1.5rem);
             color: var(--ink-muted);
-            max-width: 520px;
-            margin: 1.6rem 0 3rem;
+            max-width: 100%;
+            margin: 0.5rem 0 1rem;
             font-weight: 300;
+            line-height: 1.3;
         }
 
         .hero-cta{
             display: inline-flex;
+            align-self: flex-start;
             align-items: center;
             gap: 0.75rem;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.78rem;
+            font-size: clamp(0.55rem, 0.75vw, 0.78rem);
             letter-spacing: 0.08em;
             text-transform: uppercase;
             color: var(--ink);
             text-decoration: none;
             background-color: var(--ink-muted);
             border: 1.5px solid var(--ink);
-            padding: 0.85rem 1.8rem;
+            padding: 0.5rem 1rem;
             border-radius: 100px;
             transition: background var(--transition), color var(--transition), transform 0.2s;
             position: relative;
@@ -283,6 +300,50 @@
         .fact-item:hover{
             transform: translateX(6px);
             box-shadow: -4px 0 0 var(--accent);
+        }
+        /* ABOUT IMAGE PREVIEW */
+        .camera-preview{
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            aspect-ratio: 4 / 3;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        /* Image shown inside the camera screen */
+        .camera-preview .preview-image{
+            position: absolute;
+            top: 15.5%;
+            left: 13.5%;
+            width: 70%;
+            height: 70%;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0;
+            z-index: 1;
+            transition: opacity 0.3s ease, transform 0.4s ease;
+            background: #050505;
+        }
+
+        /* Under Development */
+        .camera-preview .camframe{
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .camera-preview.preview-active .preview-image{
+            opacity: 1;
+            transform: scale(1.02);
+        }
+
+        .fact-item{
+            cursor: pointer;
         }
         .fact-icon{
             font-size: 1.3rem;
@@ -445,6 +506,7 @@
             flex-wrap: wrap;
             gap: 1rem;
          }
+         /**/
          .contact-link{
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.75rem;
@@ -505,8 +567,21 @@
             position: absolute;
             inset: 0;
             width: 100%;
-            height: 115%;
-            z-index: 2;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            display: block;
+        }
+        .hero-tv{
+            position: relative;
+            width: min(100%, 1200px, calc(119.37vh - 101px));
+            aspect-ratio: 1208 / 1012;
+            margin: clamp(5.25rem, 10vh, 6rem) auto 0;
+        }
+        .camframe{
+            position: relative;
+            inset: 0;
+            z-index: 5;
             pointer-events: none;
         }
         @keyframes flicker {
@@ -542,21 +617,6 @@
                 transform: translateY(4px);
             }  
         }
-        #hero{
-            animation: flicker 0.8s infinite;
-            animation: glitch 0.1s infinite;
-            animation: scan 0.2s linear in;
-            background: repeating-linear-gradient(
-            to bottom,
-            rgba(255,255,255,0.05) 0px,
-            rgba(255,255,255,0.05) 1px,
-            rgba(0,0,0,0.15) 2px,
-            rgba(0,0,0,0.15) 3px
-         );
-        z-index: 1;
-        border-radius:20px;
-        transform:perspective(1000px) rotateX(2deg);
-        }
     </style>
 </head>
 <body>
@@ -571,38 +631,51 @@
         </ul>
     </nav>
 
-    /* Cover page*/
-    <img src="images/tv.png" alt="tv frame(credits: https://pngtree.com/freepng/old-tv-screen_7269633.html)" class="frame">
-    <section id="hero" style="padding-top: 0; padding-bottom: 0;">
-        <span class="hero-tag reveal">B.Tech Mechanical Engineering VIT Vellore</span>
-        <h1 class="hero-name reveal">
-            Yaswanth<br><em>Uppalapu</em>
+    <div class="hero-tv">
+        <img src="images/tv.png" alt="GoldStar television frame" class="frame">
+        <section id="hero">
+            <span class="hero-tag reveal">B.Tech Mechanical Engineering VIT Vellore</span>
+            <h1 class="hero-name reveal">
+                Yaswanth<br><em>Uppalapu</em>
             </h1>
-        <p class="hero-sub reveal">
-            18 year old hack clubber from Machilipatnam, Andhra Pradesh, India</p>
-        <a href="#projects" class="hero-cta reveal">
-            <span style="color: var(--ink);">See some cool stuff i made</span>
-        </a>
-       
-    </section>
+            <p class="hero-sub reveal">
+                18 year old hack clubber from Machilipatnam, Andhra Pradesh, India</p>
+            <a href="#projects" class="hero-cta reveal">
+                <span style="color: var(--ink);">See some cool stuff i made</span>
+            </a>
+        </section>
+    </div>
 
     <hr class="divider">
-    
+
 
     <section id="about">
         <div class="about-text">
             <span class="label reveal">About Me</span>
-            <h2 class="section-title reveal">Engineer by trade,<br>curious by nature.</h2>
+
+            <div class="camera-preview reveal" id="camera-preview">
+                <img
+                    id="about-preview-image"
+                    class="preview-image"
+                    src=""
+                    alt="About Me preview"
+                >
+                <img
+                    src="images/Camera.png"
+                    alt="Camera frame"
+                    class="camframe"
+                >
+            </div>
                 <p class="reveal">
                     I'm a Mechanical Engineering freshman at <strong>VIT, Vellore</strong>, currently in role of junior Autonomous Systems Engineer in <strong>Team AutoZ</strong> the university's autonomous vehicle team.
                 </p>
                 <p class="reveal">
-                    My interests span <strong>Mathematical Modelling</strong>,<strong>Fluid dynamics</strong>, and <strong>Robotics</strong>.
+                    My interests span <strong>Mathematical Modelling</strong>,<strong>Soft robotics</strong>, and <strong>Robotics</strong>.
                 </p>
             </div>
 
         <div class="about-facts">
-            <div class="fact-item reveal">
+            <div class="fact-item reveal" data-image="images/smec.png">
                 <div class="fact-icon">🎓</div>
                 <div>
                     <div class="fact-title">Education</div>
@@ -610,21 +683,21 @@
                 </div>
             </div>
             
-            <div class="fact-item reveal">
+            <div class="fact-item reveal" data-image="images/autoz.png">
                 <div class="fact-icon">⚒️</div>
                 <div>
                     <div class="fact-title">Role</div>
                     <div class="fact-desc">Jr. Autonomous Systems Engineer, Team AutoZ</div>
                 </div>
             </div>
-            <div class="fact-item reveal">
+            <div class="fact-item reveal" data-image="images/image.png">
                 <div class="fact-icon">📍</div>
                 <div>
                     <div class="fact-title">Location</div>
                     <div class="fact-desc">Vellore Tamil Nadu, India</div>
                 </div>
             </div>
-            <div class="fact-item reveal">
+            <div class="fact-item reveal" data-image="images/SFS1.png">
                 <div class="fact-icon">🏫</div>
                 <div>
                     <div class="fact-title">Education</div>
@@ -752,6 +825,22 @@
             el.addEventListener('mouseleave', () => cursor.classList.remove('grow'));
         });
 
+        // ABOUT ME: show an image in the camera when a card is hovered
+        const factItems = document.querySelectorAll('.fact-item[data-image]');
+        const cameraPreview = document.getElementById('camera-preview');
+        const aboutPreviewImage = document.getElementById('about-preview-image');
+
+        factItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                aboutPreviewImage.src = item.dataset.image;
+                cameraPreview.classList.add('preview-active');
+            });
+
+            item.addEventListener('mouseleave', () => {
+                cameraPreview.classList.remove('preview-active');
+            });
+        });
+
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             navbar.classList.toggle('scrolled', window.scrollY > 50);
@@ -766,6 +855,6 @@
             });
         }, {threshold: 0.12});
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    </script>>
+    </script>
 </body>
 </html>
