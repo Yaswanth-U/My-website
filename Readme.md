@@ -27,3 +27,8 @@ Feel free to edit, copy and reuse my code in your projects.
 3. Appointment/Meeting scheduling
 4. A page to show off my certifications and other stuff than projects.
 
+![s1](https://cdn.hackclub.com/01a140b8-fc26-74df-b155-a5a5441d2190/Screenshot%202026-10-13%20104117.png)
+![s2](https://cdn.hackclub.com/01a140b8-fb08-7a8c-a33a-7af410ebaf72/Screenshot%202026-10-13%20104136.png)
+![s3](https://cdn.hackclub.com/01a140b8-f9fb-75c8-aadb-7e4013ebe8cb/Screenshot%202026-10-13%20104155.png)
+
+
