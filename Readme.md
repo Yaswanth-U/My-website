@@ -6,7 +6,7 @@ I wanted a professional-looking website, so I progressed from basic HTML to lear
 I saw some of the portfolio websites of fellow hackclubbers
 https://macondo.hackclub.com/projects/3527
 ## AI usage:
-I have used VS Code in-line suggestions 
+I have used VS Code in-line suggestions and intitilally for CSS styling but I heavily modified it so its not looking anywere near AI slop!
 ## Tech stack
 ### HTML:
 HTML is used for the structure of the website
